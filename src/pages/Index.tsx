@@ -25,7 +25,7 @@ const bookmarks: BookmarkProps[] = [
     id: 3,
     name: "Винтажная закладка",
     price: 750,
-    image: "/placeholder.svg",
+    image: "https://cdn.poehali.dev/files/a01da01e-b3af-4e32-be94-8ccefd2cc4c4.jpg",
     description: "Стилизованная под старину с уникальным дизайном",
     inStock: false
   },
@@ -33,7 +33,7 @@ const bookmarks: BookmarkProps[] = [
     id: 4,
     name: "Геометрия",
     price: 550,
-    image: "/placeholder.svg",
+    image: "https://cdn.poehali.dev/files/4fbb2f93-1235-43d0-8ee8-3f76b23e679c.jpg",
     description: "Современный дизайн с геометрическими элементами",
     inStock: true
   },
@@ -49,7 +49,7 @@ const bookmarks: BookmarkProps[] = [
     id: 6,
     name: "Минимализм",
     price: 450,
-    image: "/placeholder.svg",
+    image: "https://cdn.poehali.dev/files/21357d35-38be-48f3-be3a-c753547b7c81.jpg",
     description: "Простая, но элегантная закладка для ценителей минимализма",
     inStock: true
   }
@@ -128,7 +128,7 @@ const Index = () => {
             </div>
             <div className="md:w-1/2 flex justify-center">
               <img 
-                src="/placeholder.svg" 
+                src="https://cdn.poehali.dev/files/a5fb4769-de74-42ed-81c9-9dc95e5da1a4.jpg" 
                 alt="Коллекция закладок" 
                 className="rounded-lg shadow-2xl max-w-md w-full"
               />
