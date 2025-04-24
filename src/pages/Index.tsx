@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import BookmarkCard, { BookmarkProps } from "@/components/BookmarkCard";
 import TestimonialCard, { TestimonialProps } from "@/components/TestimonialCard";
-import CustomOrderSection from "@/components/CustomOrderSection";
 import { 
   Dialog,
   DialogContent,
@@ -89,6 +88,14 @@ const testimonials: TestimonialProps[] = [
 
 const Index = () => {
   const [orderDialogOpen, setOrderDialogOpen] = useState(false);
+  const [aboutDialogOpen, setAboutDialogOpen] = useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-darkgray text-white">
@@ -128,10 +135,19 @@ const Index = () => {
                 которое подчеркнет ваш изысканный вкус и любовь к чтению.
               </p>
               <div className="flex space-x-4">
-                <Button size="lg" className="bg-gold text-darkgray hover:bg-gold/80">
+                <Button 
+                  size="lg" 
+                  className="bg-gold text-darkgray hover:bg-gold/80"
+                  onClick={() => scrollToSection('catalog')}
+                >
                   Смотреть каталог
                 </Button>
-                <Button size="lg" variant="outline" className="border-gold text-gold hover:bg-gold/10">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-gold text-gold hover:bg-gold/10"
+                  onClick={() => setAboutDialogOpen(true)}
+                >
                   О нас
                 </Button>
               </div>
@@ -146,6 +162,37 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* About Us Dialog */}
+      <Dialog open={aboutDialogOpen} onOpenChange={setAboutDialogOpen}>
+        <DialogContent className="bg-background text-foreground max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-playfair text-darkgray">О нашем магазине</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 mt-4">
+            <p className="text-muted-foreground">
+              <span className="font-bold text-darkgray">«Хороший Маркёр»</span> — это семейный магазин, созданный в 2024 году командой энтузиастов и ценителей литературы. 
+            </p>
+            <p className="text-muted-foreground">
+              Наша философия проста: мы верим, что каждая книга заслуживает особенного отношения, а каждый читатель — уникального аксессуара, который подчеркнет его стиль и любовь к чтению.
+            </p>
+            <p className="text-muted-foreground">
+              Мы создаем закладки вручную, используя только качественные материалы: натуральную кожу, благородные металлы и дерево редких пород. Каждая закладка проходит тщательный контроль качества перед тем, как попадает к своему владельцу.
+            </p>
+            <p className="text-muted-foreground">
+              В нашей коллекции вы найдете как классические модели, так и эксклюзивные дизайнерские решения. А если вы не нашли идеальный вариант — мы с радостью изготовим закладку на заказ по вашему эскизу.
+            </p>
+            <div className="pt-4">
+              <Button 
+                className="w-full bg-gold text-darkgray hover:bg-gold/80"
+                onClick={() => setAboutDialogOpen(false)}
+              >
+                Закрыть
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Catalog Section */}
       <section id="catalog" className="py-16 bg-background">
