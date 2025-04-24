@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import BookmarkCard, { BookmarkProps } from "@/components/BookmarkCard";
 import TestimonialCard, { TestimonialProps } from "@/components/TestimonialCard";
 import CustomOrderSection from "@/components/CustomOrderSection";
+import { 
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription
+} from "@/components/ui/dialog";
+import { Textarea } from "@/components/ui/textarea";
 
 const bookmarks: BookmarkProps[] = [
   {
@@ -60,26 +68,28 @@ const testimonials: TestimonialProps[] = [
     id: 1,
     name: "Екатерина М.",
     rating: 5,
-    date: "15.05.2023",
+    date: "15.05.2024",
     text: "Потрясающее качество! Закладка не только красивая, но и очень прочная. Всем рекомендую!"
   },
   {
     id: 2,
     name: "Александр П.",
     rating: 4,
-    date: "23.07.2023",
+    date: "23.07.2024",
     text: "Заказывал индивидуальную закладку с гравировкой. Получилось отлично, хотя доставка немного задержалась."
   },
   {
     id: 3,
     name: "Мария Д.",
     rating: 5,
-    date: "10.09.2023",
+    date: "10.09.2024",
     text: "Прекрасный подарок для любителя книг! Моя сестра была в восторге от дизайна и качества."
   }
 ];
 
 const Index = () => {
+  const [orderDialogOpen, setOrderDialogOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-darkgray text-white">
       {/* Header */}
@@ -157,8 +167,53 @@ const Index = () => {
 
       {/* Custom Order Section */}
       <section id="custom">
-        <CustomOrderSection />
+        <div className="py-16 bg-secondary text-secondary-foreground">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+                Создайте свою уникальную закладку
+              </h2>
+              <p className="text-lg mb-8">
+                Мы можем изготовить закладку по вашему дизайну или с учетом ваших пожеланий.
+                Идеальный подарок для любителей чтения или для себя!
+              </p>
+              <Button 
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary/90"
+                onClick={() => setOrderDialogOpen(true)}
+              >
+                Заказать индивидуальную закладку
+              </Button>
+            </div>
+          </div>
+        </div>
       </section>
+
+      {/* Order Dialog */}
+      <Dialog open={orderDialogOpen} onOpenChange={setOrderDialogOpen}>
+        <DialogContent className="bg-background text-foreground max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-playfair text-darkgray">Индивидуальный заказ</DialogTitle>
+            <DialogDescription className="text-muted-foreground mt-2">
+              Опишите закладку, которую вы хотите заказать
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 mt-4">
+            <Textarea 
+              className="min-h-[120px] resize-none border-gray-300"
+              placeholder="Опишите материал, дизайн, размеры, цвета и другие особенности желаемой закладки..."
+            />
+            <div className="flex space-x-3 justify-end">
+              <Button variant="outline" onClick={() => setOrderDialogOpen(false)}>
+                Отмена
+              </Button>
+              <Button className="bg-gold text-darkgray hover:bg-gold/80">
+                Отправить заказ
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Testimonials Section */}
       <section id="testimonials" className="py-16 bg-background">
@@ -185,7 +240,7 @@ const Index = () => {
             <div>
               <h3 className="text-xl font-playfair font-bold text-gold mb-4">Хороший Маркёр</h3>
               <p className="text-gray-400">
-                Создаем уникальные закладки для книг с 2015 года. 
+                Создаем уникальные закладки для книг с 2024 года. 
                 Качество, стиль и функциональность — наши главные принципы.
               </p>
             </div>
@@ -215,7 +270,7 @@ const Index = () => {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-gray-400 text-center text-sm">
-            <p>© 2023 Хороший Маркёр. Все права защищены.</p>
+            <p>© 2024 Хороший Маркёр. Все права защищены.</p>
           </div>
         </div>
       </footer>
