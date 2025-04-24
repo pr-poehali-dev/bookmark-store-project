@@ -9,7 +9,7 @@ const bookmarks: BookmarkProps[] = [
     id: 1,
     name: "Классическая закладка",
     price: 490,
-    image: "/placeholder.svg",
+    image: "https://cdn.poehali.dev/files/4124f857-453a-4a66-afa7-98c54613bb54.png",
     description: "Элегантная металлическая закладка с золотым тиснением",
     inStock: true
   },
@@ -17,7 +17,7 @@ const bookmarks: BookmarkProps[] = [
     id: 2,
     name: "Закладка 'Цветение'",
     price: 590,
-    image: "/placeholder.svg",
+    image: "https://cdn.poehali.dev/files/f163150b-c4f9-49b6-a93a-ac013eea616d.png",
     description: "Закладка с цветочным орнаментом из металла",
     inStock: true
   },
@@ -41,7 +41,7 @@ const bookmarks: BookmarkProps[] = [
     id: 5,
     name: "Закладка 'Путешествие'",
     price: 690,
-    image: "/placeholder.svg",
+    image: "https://cdn.poehali.dev/files/4bdeb53b-cf51-4ea6-923e-1fa30764ace6.png",
     description: "С гравировкой карты мира и компасом",
     inStock: true
   },
